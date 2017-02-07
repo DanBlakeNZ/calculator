@@ -1,3 +1,46 @@
-h1{
-  color: yellow;
+body{
+  font-size: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+ul{
+  list-style: none;
+}
+
+.button-row{
+  display: flex;
+}
+
+.calcButton{
+  width: 5em;
+  height: 3em;
+  margin: 5px;
+  border: 1px solid black;
+  text-align: center;
+  padding-top: 1.2em;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+
+#calculator{
+  width: 30em;
+  height: 40em;
+  border: 1px solid black;
+  margin: 0px auto;
+}
+
+#screen{
+  width: 100%;
+  height: 5em;
+  border: 1px solid red;
+  padding: 1em;
+  box-sizing: border-box;
+}
+
+#screen-text{
+  text-align: right;
+  font-size: 1.5em;
+  line-height: 0.3em;
 }
