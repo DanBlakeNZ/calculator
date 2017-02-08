@@ -13,6 +13,7 @@ for (var i = 0; i < buttonArray.length; i++) {
   var total = "";
 
   function getValue() {
+    console.log(num1 + " " + num2)
     attribute = this.getAttribute("data-value");
     checkValue();
     updateScreen();
@@ -20,41 +21,44 @@ for (var i = 0; i < buttonArray.length; i++) {
 
 
 function checkValue(){
+
+    // Checks if attribute is a number of not - returns either true or false
     var result = isNaN(attribute);
 
+    // If the button pressed is a number
     if (result === false){
-      console.log("Is a number");
       total += attribute;
-  } else {
-    console.log("Not a number");
-    if (attribute !== "="){
-      operator = attribute;
-    }
 
-    if (attribute === "="){
+    // Else if the button pressed is not a number
+    }else{
+
+      // If the button pressed is not the equals button then set the opperator variable to the relevent mathmatical operator.
+      if (attribute != "="){
+        operator = attribute;
+
+        if(num1 === 0){
+          num1 = parseInt(total);
+          total = "";
+          updateScreen();
+        }else{
+          num2 = parseInt(total);
+        }
+      }
+
+      // if the button pressed is the equals button then calculate the total.
+      if (attribute === "="){
       console.log(num1 + " " + operator + " " + num2)
       calculateTotal();
-    }
-    else {
-      if(num1 === 0){
-        num1 = parseInt(total);
-        total = "";
-        updateScreen();
-        // alert(num1 + " " + num2)
-      } else {
-        num2 = parseInt(total);
-        // alert(num1 + " " + num2)
       }
+
     }
   }
-}
 
-function calculateTotal(){
-  if (operator = "+"){
+  function calculateTotal(){
+    if (operator = "+"){
     total = eval("num1 + num2");
     updateScreen;
   }
-
 }
 
 function updateScreen(){
