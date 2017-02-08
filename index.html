@@ -9,64 +9,62 @@
     <!-- CSS Normalise -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" rel="stylesheet">
 
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+
     <!-- My CSS Stylesheet-->
     <link rel="stylesheet" type="text/css" href="stylesheets/scss.min.css">
 
-    <title>template</title>
+    <title>Calculator</title>
 
   </head>
 
 
   <body>
-    <div id="calculator">
+    <div id="calculator-container">
       <div id="screen">
-        <p id="screen-text">0</p>
+        <p id="screen-text">0<p>
       </div>
 
-      <ul class="button-row">
-        <li class="calcButton" data-value="AC">AC</li>
-        <li class="calcButton" data-value="CE">CE</li>
-        <li class="calcButton" data-value="/">&divide;</li>
-        <li class="calcButton" data-value="*">X</li>
-      </ul>
+      <div id="buttons-container">
 
-      <ul class="button-row">
-        <li class="calcButton" data-value="7">7</li>
-        <li class="calcButton" data-value="8">8</li>
-        <li class="calcButton" data-value="9">9</li>
-        <li class="calcButton" data-value="-">-</li>
-      </ul>
+        <ul class="button-row">
+          <li class="cal-button" data-buttonValue="AC">AC</li>
+          <li class="cal-button" data-buttonValue="CE">CE</li>
+          <li class="cal-button" data-buttonValue="/">&divide;</li>
+          <li class="cal-button" data-buttonValue="*">X</li>
+        </ul>
 
-      <ul class="button-row">
-        <li class="calcButton" data-value="4">4</li>
-        <li class="calcButton" data-value="5">5</li>
-        <li class="calcButton" data-value="6">6</li>
-        <li class="calcButton" data-value="+">+</li>
-      </ul>
+        <ul class="button-row">
+          <li class="cal-button" data-buttonValue="7">7</li>
+          <li class="cal-button" data-buttonValue="8">8</li>
+          <li class="cal-button" data-buttonValue="9">9</li>
+          <li class="cal-button" data-buttonValue="-">-</li>
+        </ul>
 
-      <ul class="button-row">
-        <li class="calcButton" data-value="1">1</li>
-        <li class="calcButton" data-value="2">2</li>
-        <li class="calcButton" data-value="3">3</li>
-        <li class="calcButton" data-value="=">=</li>
-      </ul>
+        <ul class="button-row">
+          <li class="cal-button" data-buttonValue="4">4</li>
+          <li class="cal-button" data-buttonValue="5">5</li>
+          <li class="cal-button" data-buttonValue="6">6</li>
+          <li class="cal-button" data-buttonValue="+">+</li>
+        </ul>
 
-      <ul class="button-row">
-        <li class="calcButton" data-value="0">0</li>
-        <li class="calcButton" data-value=".">.</li>
-      </ul>
+        <ul class="button-row">
+          <li class="cal-button" data-buttonValue="1">1</li>
+          <li class="cal-button" data-buttonValue="2">2</li>
+          <li class="cal-button" data-buttonValue="3">3</li>
+          <li class="cal-button" data-buttonValue="=">=</li>
+        </ul>
 
+        <ul class="button-row">
+          <li class="cal-button" data-buttonValue="0">0</li>
+          <li class="cal-button" data-buttonValue=".">.</li>
+        </ul>
+
+      </div>
 
     </div>
 
-
-
-
-
-
-
-    <!-- FontAwesome CDN -->
-    <!-- <script src="https://use.fontawesome.com/08c4c69269.js"></script> -->
 
     <!--My script-->
     <script type="text/javascript" src="scripts/calculator2.js"></script>
