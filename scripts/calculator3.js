@@ -22,6 +22,7 @@ function getValue(){
   buttonValue = this.getAttribute("data-buttonValue");    // When a button is clicked this function will retrieve the data attibute 'buttonValue' from the clicked button and will asign it to buttonValue.
   checkValue();                                           // This function will run next, checking to see if the button is a number of an operator. Depending on the outcome, other functions will run.
   updateOSD()                                             // Once the calcuations have been complete then the value to be displayed on the On Screen Display is created.
+  operator = "";
   updateScreen();                                         // Finally the calculator is screen is updated with the result of the users input, either displaying the number or the completed equation.
 };
 
@@ -41,9 +42,10 @@ function checkValue(){
   }
 
   if(buttonValue == "CE"){
+    operator = buttonValue;
     fullNumber = "";
-    updateOSD();
-    updateScreen();
+    onScreenDisplay = onScreenDisplay.substring(0, onScreenDisplay.length - 1)
+
   }
 
   if(buttonValue == "="){
@@ -96,7 +98,7 @@ function updateNumber(){                                  // Function that updat
 }
 
 function updateOSD(){                                     // Function that will run to update the onScreenDisplay variable. This will then be accessed by updateScreen to display the text on the screen.
-  if (operator != "="){
+  if ((operator != "=") && (operator != "CE")){
     onScreenDisplay += buttonValue;
   }
 }
