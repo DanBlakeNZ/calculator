@@ -28,34 +28,62 @@ function getValue(){
 
 
 function checkValue(){
-
-
-
-
-
-
-
-                                   // Function that checks if the button pressed is a number or not.
-  var isNotNumber = isNaN(buttonValue);
-
-  if ( (isNotNumber == false) || (buttonValue == ".") ){
-    updateNumber();                                       // If it is a number then the updateNumber function will run.
+  if((buttonValue <= 9) || (buttonValue == ".")){
+    updateNumber();
   }
 
-  if ( (isNotNumber == true) && (buttonValue != ".") && (buttonValue != "AC") ){   // If it is not a number then the 'operator' variable is set to the clicked mathmaticl operator's value.
-
-    operator = buttonValue;
-
-    if(operator == "="){                                 // If the operator variable is the equals sign, then...
-      numberArray[arrayCounter] = parseFloat(fullNumber);// ... convert the stored 'fullNumber' from a string to an interger and insert into the numberArray and then...
-      calculateTotal();                                   // ... run the calculateTotal function to perform the equation.
-    }else{                                                // If the operator variable is not the equals sign, then...
-      updateArrays();                                     // run the updateArray function which stores the fullNumber into the numberArray and the operator into the operatorArray.
-      fullNumber = "";                                    // The fullNumber variable is reset so it is ready for the next number the user will enter.
-      arrayCounter++                                      // The arrayCounter variable is increased by one so it is ready to insert the next fullNumber and operator variable in each relevent array.
-    }
+  if((buttonValue == "+") || (buttonValue == "-") || (buttonValue == "*") || (buttonValue == "/")){
+    checkOperator();
   }
+
+  if(buttonValue == "AC"){
+    resetCalculator();
+  }
+
+  if(buttonValue == "CE"){
+    fullNumber = "";
+    updateOSD();
+    updateScreen();
+  }
+
+  if(buttonValue == "="){
+    numberArray[arrayCounter] = parseFloat(fullNumber);
+    calculateTotal();
+  }
+
 }
+
+
+function checkOperator(){
+  operator = buttonValue;
+  updateArrays();
+  fullNumber = "";
+  arrayCounter++
+}
+
+
+
+//                                    // Function that checks if the button pressed is a number or not.
+//   var isNotNumber = isNaN(buttonValue);
+//
+//   if ( (isNotNumber == false) || (buttonValue == ".") ){
+//     updateNumber();                                       // If it is a number then the updateNumber function will run.
+//   }
+//
+//   if ( (isNotNumber == true) && (buttonValue != ".") && (buttonValue != "AC") ){   // If it is not a number then the 'operator' variable is set to the clicked mathmaticl operator's value.
+//
+//     operator = buttonValue;
+//
+//     if(operator == "="){                                 // If the operator variable is the equals sign, then...
+//       numberArray[arrayCounter] = parseFloat(fullNumber);// ... convert the stored 'fullNumber' from a string to an interger and insert into the numberArray and then...
+//       calculateTotal();                                   // ... run the calculateTotal function to perform the equation.
+//     }else{                                                // If the operator variable is not the equals sign, then...
+//       updateArrays();                                     // run the updateArray function which stores the fullNumber into the numberArray and the operator into the operatorArray.
+//       fullNumber = "";                                    // The fullNumber variable is reset so it is ready for the next number the user will enter.
+//       arrayCounter++                                      // The arrayCounter variable is increased by one so it is ready to insert the next fullNumber and operator variable in each relevent array.
+//     }
+//   }
+// }
 
 
 function updateArrays(){                                  // Function that updates the arrays that store each fullNumber and operator.
@@ -78,7 +106,10 @@ function updateScreen(){                                // Function that updates
 }
 
 
-function calculateTotal(){                              // Function that will calculate the total
+function calculateTotal(){
+
+  operator = buttonValue;
+                                // Function that will calculate the total
   var runningTotal = 0;                                 // Tempory variable that will hold the running total after each individaul calculation is performed.
 
   if (total === 0){                                     // If the total variable is 0 then no previous calculations have been performed so...
@@ -117,4 +148,5 @@ function resetCalculator(){
   numberArray = [];
   operatorArray = [];
   arrayCounter = 0;
+  total = 0;
 }
