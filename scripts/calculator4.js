@@ -1,32 +1,30 @@
 // Variables //
-var buttonValue = "";           // Stores the value of the clicked button.
-var onScreenDisplay = "";       // Holds the screen text including operators.
-var fullNumber = "";            // Is used to store each added numerical character to make a multi-digit number.
-var operator = "";              // Temporarily stores a math operator when entered by the user.
-var numberArray = [];           // Array that stores each full (single or multi-digit) number entered by the user.
-var operatorArray = [];         // Stores every operator to be used in the equation.
-var arrayCounter = 0;           // Keeps track of where each number and operator should be inserted into the array.
-var total = 0;                  // Stores the final total once calculated.
+var buttonValue = "";
+var onScreenDisplay = "";
+var fullNumber = "";
+var operator = "";
+var numberArray = [];
+var operatorArray = [];
+var arrayCounter = 0;
+var total = 0;
 
 
 
 
-var buttonArray = document.getElementsByClassName("cal-button");      // Variable that stores in an array every instance of the calculator's 'buttons' with a class of cal-button
+var buttonArray = document.getElementsByClassName("cal-button");
 
 for (var i = 0; i < buttonArray.length; i++) {
-    buttonArray[i].addEventListener('click', getValue);               // Each calculator button is assigned a click event listener, so when clicked the getValue function will run.
+    buttonArray[i].addEventListener('click', getValue);
 }
 
 
 function getValue(){
-  buttonValue = this.getAttribute("data-buttonValue");    // When a button is clicked this function will retrieve the data attibute 'buttonValue' from the clicked button and will asign it to buttonValue.
-  checkValue();                                           // This function will run next, checking to see if the button is a number of an operator. Depending on the outcome, other functions will run.
-  updateOSD()                                             // Once the calcuations have been complete then the value to be displayed on the On Screen Display is created.
+  buttonValue = this.getAttribute("data-buttonValue");
+  checkValue();
+  updateOSD();
   operator = "";
-  updateScreen();                                         // Finally the calculator is screen is updated with the result of the users input, either displaying the number or the completed equation.
+  updateScreen();
 };
-
-
 
 function checkValue(){
   if((buttonValue <= 9) || (buttonValue == ".")){
@@ -81,10 +79,11 @@ function updateScreen(){
 }
 
 
+
+
 function calculateTotal(){
 
   operator = buttonValue;
-
   var runningTotal = 0;
 
   if (total === 0){
@@ -94,6 +93,7 @@ function calculateTotal(){
   }
 
   for (var  i=0; i < operatorArray.length; i++){
+
     if (operatorArray[i] == "+"){
       runningTotal += numberArray[i+1];
     }
@@ -114,6 +114,7 @@ function calculateTotal(){
   operatorArray = [];
   arrayCounter = 0;
 }
+
 
 function clearEntry(){
   operator = buttonValue;
